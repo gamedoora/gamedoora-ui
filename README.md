@@ -27,23 +27,23 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-###Components:
+### Components:
 
 gamedoora-live/src/components
 
-##Router
+## Router
 gamedoora-live/src/router
 
-##Pages
+## Pages
 gamedoora-live/src/pages
 
-###all packages
+### all packages
 package.json
 
-####assets,images,css,fonts
+#### assets,images,css,fonts
 gamedoora-live/src/assets
 
-###launch page
+### launch page
 App.vue
 
 
