@@ -1,28 +1,23 @@
-import Vue from 'vue';
-import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 
-Vue.use(VueRouter);
+const ContentPage = () => import("@/pages/ContentPage.vue");
+const SigninPage = () => import("@/pages/SigninPage.vue");
+const SignupPage = () => import("@/pages/SignupPage.vue");
+const ForgotPassword = () => import("@/pages/ForgotPassword.vue");
 
-const routes: Array<RouteConfig> = [
+const routes: Array<RouteRecordRaw> = [
+  { path: "/", name: "signin", component: SigninPage },
+  { path: "/signup", name: "signup", component: SignupPage },
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: "/forgot-password",
+    name: "forgot-password",
+    component: ForgotPassword,
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
+  { path: "/studio", name: "studio", component: ContentPage },
 ];
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(),
   routes,
 });
 

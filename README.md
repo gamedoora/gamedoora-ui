@@ -1,5 +1,9 @@
 # gamedoora-ui
-
+The Vue.js based SPA that powers the UI of Gamedoora. 
+## Requirements
+- npm v6.14 or higher
+- node v14.15 or higher
+ 
 ## Project setup
 ```
 npm install
@@ -15,16 +19,6 @@ npm run serve
 npm run build
 ```
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
 ### Lints and fixes files
 ```
 npm run lint
@@ -32,3 +26,27 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+###Components:
+
+gamedoora-live/src/components
+
+##Router
+gamedoora-live/src/router
+
+##Pages
+gamedoora-live/src/pages
+
+###all packages
+package.json
+
+####assets,images,css,fonts
+gamedoora-live/src/assets
+
+###launch page
+App.vue
+
+
+
+
+

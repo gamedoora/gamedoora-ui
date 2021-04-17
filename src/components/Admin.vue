@@ -1,0 +1,75 @@
+<template>
+  <div class="page-header-block">
+    <div class="heading">Studio Admin Panel</div>
+    <ol class="breadcrumb">
+      <li>
+        <a class="get_studio_stream_url" href="javascript:void(0)"> As </a>
+      </li>
+    </ol>
+  </div>
+  <div class="studio-admin-container">
+    <div class="studio-admin-nav-bar">
+      <ul class="nav nav-tabs">
+        <li v-bind:class="{ active: activeTab == 0 }">
+          <a
+            data-toggle="tab"
+            @click="activeTab = 0"
+            href="javascript:void(0)"
+            class="get_studio_users_list_url"
+          >
+            Studio Members
+          </a>
+        </li>
+        <li v-bind:class="{ active: activeTab == 1 }">
+          <a
+            data-toggle="tab"
+            @click="activeTab = 1"
+            href="javascript:void(0)"
+            class="get_studio_user_requests_url"
+          >
+            User Requests
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="studio-admin-content">
+      <div class="table-responsive" v-if="activeTab === 0">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Name</td>
+              <td>Email</td>
+              <td>Role</td>
+              <td>Joined At</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-tenant-user_id="115" data-user-id="28">
+              <td>1</td>
+              <td>pradeep</td>
+              <td>pnatrial@gmail.com</td>
+              <td>Admin</td>
+              <td>11-Mar-2021</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h5 v-if="activeTab === 1">There are no pending members requests</h5>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "Admin",
+  data() {
+    return {
+      activeTab: 0,
+    };
+  },
+});
+</script>

@@ -1,0 +1,130 @@
+<template>
+  <div style="height: 100px; border-bottom: 3px solid #e1e1e1">
+    <h3 class="w3-left w3-margin">Assets Management</h3>
+    <div class="w3-cell w3-right">
+      <p>As / assets</p>
+      <p style="font-size: 14px; margin-right: 20px">Upload new Asset</p>
+      <p style="font-size: 14px; margin-top: -15px; margin-right: 20px">
+        Upload new Script
+      </p>
+    </div>
+  </div>
+  <div class="w3-container">
+    <button
+      v-on:click="openAccordion('Demo1')"
+      class="w3-btn w3-block w3-black w3-left-align"
+      style="margin-top: 15px"
+    >
+      <h5>Advance Filter</h5>
+      <i
+        class="fa fa-chevron-down w3-right"
+        style="margin-top: -30px; font-size: 20px"
+        aria-hidden="true"
+      ></i>
+    </button>
+    <div id="Demo1" class="w3-hide">
+      <div class="w3-block w3-border w3-shadow">
+        <p class="w3-left w3-margin-left">
+          - Search for one or more Customers -
+        </p>
+        <div class="w3-row">
+          <div class="w3-col s12 m4 l4">
+            <input
+              class="w3-input w3-border"
+              style="width: 80%; margin: 0px 10px 20px 50px"
+              type="text"
+              placeholder="Search By Asset Name"
+            />
+          </div>
+          <div class="w3-col s12 m4 l4">
+            <select
+              class="w3-select w3-border"
+              name="option"
+              style="width: 80%; margin: 0px 10px 20px 10px"
+            >
+              <option value="" disabled selected>
+                --Select a type of asset--
+              </option>
+              <option value="1">Document</option>
+              <option value="2">Image</option>
+              <option value="3">Audio</option>
+              <option value="3">Video</option>
+              <option value="3">Script</option>
+            </select>
+          </div>
+          <div class="w3-col m4 l4">
+            <button
+              class="w3-button w3-white w3-border"
+              style="width: 35%; margin-right: 10%"
+            >
+              Reset
+            </button>
+            <button
+              class="w3-button"
+              style="width: 35%; background-color: #ff8833; color: white"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w3-responsive">
+      <table class="w3-table w3-border" style="margin-top: 5%">
+        <tr style="text-align: center; padding: 10%">
+          <td class="w3-border">#</td>
+          <td class="w3-border">NAME</td>
+          <td class="w3-border">FILE TYPE</td>
+          <td class="w3-border">USER</td>
+          <td class="w3-border">VERSION</td>
+          <td class="w3-border">STATUS</td>
+          <td class="w3-border">FILE</td>
+          <td class="w3-border">
+            ACTIONS
+            <i
+              class="fa fa-plus w3-right"
+              style="font-size: 21px; margin-right: 11px"
+              aria-hidden="true"
+            ></i>
+          </td>
+        </tr>
+        <tr>
+          <td class="w3-border">First Name</td>
+          <td class="w3-border">First Name</td>
+          <td class="w3-border">First Name</td>
+          <td class="w3-border">First Name</td>
+          <td class="w3-border">First Name</td>
+          <td class="w3-border">First Name</td>
+          <td class="w3-border">First Name</td>
+          <td class="w3-border">
+            <i
+              class="fa fa-link"
+              style="margin-right: 10px"
+              aria-hidden="true"
+            ></i>
+            <i class="fa fa-upload" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import $ from "jquery";
+export default defineComponent({
+  name: "Assets",
+  methods: {
+    openAccordion: function (id:string):void {
+     
+      var x = $('#'+id)
+      if (!x.hasClass('w3-show')) {
+        x.addClass('w3-show');
+      } else {
+        x.removeClass('w3-show');
+      }
+    },
+  },
+});
+</script>
