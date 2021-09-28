@@ -1,0 +1,27 @@
+name: Test & Build Gamedoora-UI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      env:
+        NODE_ENV: development
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - run: npm install
+    - run: npm run lint
+    - run: npm run build
+    - name: Run headless tests for e2e
+      uses: GabrielBB/xvfb-action@v1
+      with:
+        run: npm run test:unit
