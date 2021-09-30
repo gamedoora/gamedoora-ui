@@ -1,3 +1,26 @@
 {
-    
+    "mystudios":[
+        {
+            "name":"studio1",
+            "information":[
+                {
+                    "stream": " ",
+                    "assets": " ",
+                    "tasks": " ",
+                    "dashboard": " "
+                }
+            ]
+        },
+        {
+            "name":"studio2",
+            "information":[
+                {
+                    "stream": " ",
+                    "assets": " ",
+                    "tasks": " ",
+                    "dashboard": " "
+                }
+            ]
+        }
+    ]
 }
