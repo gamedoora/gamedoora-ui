@@ -1,0 +1,13 @@
+{
+    "new-notifictions": "integer-value",
+    "notifications": [
+        {
+            "notification": "your notification 1",
+            "studio": "this notification belongs to this studio"
+        },
+        {
+            "notification": "your notification 2",
+            "studio": "this notification belongs to this studio"
+        }
+    ]
+}
