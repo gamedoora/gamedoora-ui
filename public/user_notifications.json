@@ -3,11 +3,11 @@
     "notifications": [
         {
             "notification": "your notification 1",
-            "studio": "this notification belongs to this studio"
+            "studio": "this notification belongs to studio1"
         },
         {
             "notification": "your notification 2",
-            "studio": "this notification belongs to this studio"
+            "studio": "this notification belongs to studio2"
         }
     ]
 }
