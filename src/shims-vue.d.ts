@@ -4,4 +4,4 @@ declare module "*.vue" {
   export default Component;
 }
 
-declare module 'vue3-highcharts';
+declare module "vue3-highcharts";
