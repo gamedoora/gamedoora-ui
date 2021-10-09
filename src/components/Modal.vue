@@ -159,7 +159,6 @@
 </template>
 
 <script lang="ts">
-import { Emitter } from "node_modules/mitt";
 import { getCurrentInstance, defineComponent } from "vue";
 
 export default defineComponent({
