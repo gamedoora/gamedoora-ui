@@ -4,9 +4,15 @@
             "name":"studio1",
             "information":[
                 {
-                    "stream": " ",
-                    "assets": " ",
-                    "tasks": " ",
+                    "stream": " "
+                },
+                {
+                    "assets": " "
+                },
+                {
+                    "tasks": " "
+                },
+                {
                     "dashboard": " "
                 }
             ]
@@ -14,12 +20,18 @@
         {
             "name":"studio2",
             "information":[
-                {
-                    "stream": " ",
-                    "assets": " ",
-                    "tasks": " ",
-                    "dashboard": " "
-                }
+                    {
+                        "stream": " "
+                    },
+                    {
+                        "assets": " "
+                    },
+                    {
+                        "tasks": " "
+                    },
+                    {
+                        "dashboard": " "
+                    }
             ]
         }
     ]
