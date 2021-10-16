@@ -1,0 +1,21 @@
+{
+    "user_id" : "user id",
+    "notifications": [
+        {
+            "notification_id" : "notification id",
+            "studio" : "notification studio",
+            "is_seen" : " ", 
+            "is_clicked" : " ",
+            "created_at" : "time",
+            "updated at" : " time"
+        },
+        {
+            "notification_id" : "notification id",
+            "studio" : "notification studio",
+            "is_seen" : " ", 
+            "is_clicked" : " ",
+            "created_at" : "time",
+            "updated at" : " time"
+        }
+    ]
+}

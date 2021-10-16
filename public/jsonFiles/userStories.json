@@ -1,0 +1,13 @@
+{
+    "stories" : [
+        {
+            "story_id" : "id",
+            "user_id" : "id",
+            "role" : "role",
+            "assignee" : "assigned user",
+            "created_at" : "datetime",
+            "updated_at" : "datetime"
+        }
+    ]
+
+}
