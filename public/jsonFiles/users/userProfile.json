@@ -1,4 +1,6 @@
 {
+    "id" : "001",
+    "name" : "user1",
     "updates" : [
         {
             "id" : "update id",
@@ -13,4 +15,4 @@
             "updated_at": "datetime"
         }
     ]
-}
+} 
