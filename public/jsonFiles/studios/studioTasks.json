@@ -3,7 +3,7 @@
         {
             "id" : "1",
             "story_id" : "01",
-            "description" : " ",
+            "description" : "task1",
             "is_done" : "yes/no",
             "created_at" : "dtetime",
             "updated_at" : "datetime"
