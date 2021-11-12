@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Stream from "../components/stream.vue";
+import Stream from "../components/Stream.vue";
 import Assets from "../components/Assets.vue";
 import Admin from "../components/Admin.vue";
 import TasksNew from "../components/TasksNew.vue";
