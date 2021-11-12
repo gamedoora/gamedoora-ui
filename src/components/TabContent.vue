@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import Stream from "./Stream.vue";
+import Stream from "./stream.vue";
 import Assets from "./Assets.vue";
 import Admin from "./Admin.vue";
 import TasksNew from "./TasksNew.vue";

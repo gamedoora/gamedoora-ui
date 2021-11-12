@@ -364,7 +364,7 @@
 </template>
 
 <script>
-import Stream from "./Stream.vue";
+import Stream from "./stream.vue";
 export default {
   name: "Content",
   components: {
