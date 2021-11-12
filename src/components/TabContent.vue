@@ -15,12 +15,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
 import Stream from "./Stream.vue";
 import Assets from "./Assets.vue";
 import Admin from "./Admin.vue";
 import TasksNew from "./TasksNew.vue";
 import Dashboard from "./Dashboard.vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "TabContent",
