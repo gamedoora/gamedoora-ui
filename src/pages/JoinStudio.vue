@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import StudioItem from "../components/StudioItem.vue";
+import StudioItem from "./StudioItem.vue";
 
 export default defineComponent({
   name: "JoinStudio",
