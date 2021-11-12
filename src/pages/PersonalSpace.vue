@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Stream from "@/components/Stream.vue";
+import Stream from "../components/Stream.vue";
 export default defineComponent({
   name: "PersonalSpace",
   components: {
