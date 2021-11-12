@@ -23,7 +23,7 @@
   </div>
   <div class="w3-card content-height">
     <div id="stream" style="display: none" class="tabs">
-      <stream />
+      <Stream />
     </div>
     <div id="tasks" style="display: none" class="tabs">
       <div class="w3-quarter">
