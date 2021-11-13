@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import TabHeader from "../components/TabHeader.vue";
-import TabContent from "../components/TabContent.vue";
+import TabHeader from "@/components/TabHeader.vue";
+import TabContent from "@/components/TabContent.vue";
 
 export default defineComponent({
   name: "Dashboard",

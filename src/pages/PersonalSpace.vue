@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
+import Stream from "@/components/stream.vue";
 import { defineComponent } from "vue";
-import Stream from "../components/stream.vue";
 export default defineComponent({
   name: "PersonalSpace",
   components: {

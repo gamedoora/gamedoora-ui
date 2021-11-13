@@ -22,9 +22,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Header from "./components/header.vue";
-import LeftNavigationNew from "./components/LeftNavigationNew.vue";
-import RightNavigation from "./components/rightNavigation.vue";
+import Header from "@/components/header.vue";
+import LeftNavigationNew from "@/components/LeftNavigationNew.vue";
+import RightNavigation from "@/components/rightNavigation.vue";
 import ThemeConfig from "@/interface";
 
 export default defineComponent({
