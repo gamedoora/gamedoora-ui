@@ -113,9 +113,7 @@ export default {
       this.$root.$data.leftBarActive = false;
     },
     goToView(comp) {
-      console.log(comp);
       this.$root.$data.currentView = comp;
-      console.log(this.$root.$data.currentView);
     },
     showNewStudio() {
       this.emitter.emit("modal:toggle");

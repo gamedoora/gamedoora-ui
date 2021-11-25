@@ -54,7 +54,6 @@ export default defineComponent({
     },
   },
   created() {
-    console.log("Navigation", this.showNav);
     this.onResize();
     window.addEventListener("resize", this.onResize);
   },
@@ -70,7 +69,6 @@ export default defineComponent({
     $route(to) {
       const noHeader = ["/", "/signup", "/forgot-password"];
       this.showNav = !noHeader.includes(to.path);
-      console.log("WATCH", noHeader.includes(to.path));
     },
   },
 });
