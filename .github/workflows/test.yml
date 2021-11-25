@@ -20,6 +20,7 @@ jobs:
         node-version: 14.x
     - run: npm install
     - run: npm run lint
+    - run: npm run build:dev
     - run: npm run build
     - name: Run headless tests for e2e
       uses: GabrielBB/xvfb-action@v1
