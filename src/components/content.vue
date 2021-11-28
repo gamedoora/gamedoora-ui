@@ -372,7 +372,6 @@ export default {
   },
   methods: {
     hideRightSideBar: function () {
-      console.log("HiderightSideBar");
       document.getElementById("rightBarIcon").style.display = "";
       document.getElementById("rightSideBar").style.display = "none";
       var element = document.getElementById("mainContent");
@@ -380,42 +379,34 @@ export default {
     },
 
     showBacklog: function () {
-      console.log("showBacklog");
       document.getElementById("showBacklog").style.display = "";
       document.getElementById("backlog").style.display = "none";
     },
     hideBacklog: function () {
-      console.log("showBacklog");
       document.getElementById("showBacklog").style.display = "none";
       document.getElementById("backlog").style.display = "";
     },
     showTodo: function () {
-      console.log("showBacklog");
       document.getElementById("showTodo").style.display = "";
       document.getElementById("todo").style.display = "none";
     },
     hideTodo: function () {
-      console.log("showBacklog");
       document.getElementById("showTodo").style.display = "none";
       document.getElementById("todo").style.display = "";
     },
     showProgress: function () {
-      console.log("showBacklog");
       document.getElementById("showProgress").style.display = "";
       document.getElementById("progress").style.display = "none";
     },
     hideProgress: function () {
-      console.log("showBacklog");
       document.getElementById("showProgress").style.display = "none";
       document.getElementById("progress").style.display = "";
     },
     showDone: function () {
-      console.log("showBacklog");
       document.getElementById("showDone").style.display = "";
       document.getElementById("done").style.display = "none";
     },
     hideDone: function () {
-      console.log("showBacklog");
       document.getElementById("showDone").style.display = "none";
       document.getElementById("done").style.display = "";
     },
@@ -439,7 +430,6 @@ export default {
       }
     },
     openAccordion: function (id) {
-      console.log("Accordion");
       var x = document.getElementById(id);
       if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";

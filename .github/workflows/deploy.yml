@@ -20,7 +20,7 @@ jobs:
       - run: npm install 
       - run: npm run lint 
       - run: npm run test:unit  
-      - run: npm run build
+      - run: npm run build:dev
       - name: Deploy Gamedoora-UI
         if: success()
         uses: JamesIves/github-pages-deploy-action@releases/v3
