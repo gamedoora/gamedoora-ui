@@ -1,1 +1,0 @@
-comments should come under studio folder or under the jsonFiles folder?

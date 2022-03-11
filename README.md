@@ -1,52 +1,27 @@
-# gamedoora-ui
-The Vue.js based SPA that powers the UI of Gamedoora. 
-## Requirements
-- npm v6.14 or higher
-- node v14.15 or higher
- 
-## Project setup
-```
-npm install
-```
+# GamedooraUi
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Development server
 
-### Lints and fixes files
-```
-npm run lint
-```
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Code scaffolding
 
-### Components:
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-gamedoora-live/src/components
+## Build
 
-## Router
-gamedoora-live/src/router
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Pages
-gamedoora-live/src/pages
+## Running unit tests
 
-### all packages
-package.json
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-#### assets,images,css,fonts
-gamedoora-live/src/assets
+## Running end-to-end tests
 
-### launch page
-App.vue
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Further help
 
-
-
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

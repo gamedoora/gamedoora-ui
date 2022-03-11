@@ -1,0 +1,21 @@
+<div class="login">
+    <div class="login-header">
+        <h1>Sign In</h1>
+        <div>social login</div>
+    </div>
+    <div class="login-body">
+        <form >
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" formControlName="username" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" />
+            </div>
+            <div class="form-group">
+              <a [routerLink]="['/studio']"  type="submit" class="btn btn-primary">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
