@@ -1,2 +1,16 @@
-<p>studio works!</p>
-<router-outlet></router-outlet>
+<app-navbar></app-navbar>
+<div class="main">
+  <app-sidebar></app-sidebar>
+  <div class="tabs">
+    <nav mat-tab-nav-bar >
+      <a mat-tab-link style="text-transform: capitalize;"
+      *ngFor="let link of links"
+      (click)="activeLink = link"
+      [active]="activeLink == link" 
+      [routerLink]="[link]">{{ link }} </a>
+    </nav>
+    <mat-tab-nav-panel #tabPanel>
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
+  </div>
+</div>

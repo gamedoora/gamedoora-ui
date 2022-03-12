@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./studio.component.scss']
 })
 export class StudioComponent implements OnInit {
+  links = [
+    'stream',
+    'tasks',
+    'dashboard',
+    'assets',
+    'admin',
+  ];
 
-  constructor() { }
+  activeLink = 'stream';
 
-  ngOnInit(): void {
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 
 }

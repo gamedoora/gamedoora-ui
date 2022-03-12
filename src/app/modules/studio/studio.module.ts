@@ -10,6 +10,9 @@ import { StreamComponent } from '../../components/stream/stream.component';
 import { TasksComponent } from '../../components/tasks/tasks.component';
 import { AssetsComponent } from '../../components/assets/assets.component';
 
+import {MatTabsModule} from '@angular/material/tabs';
+import { AdminComponent } from 'src/app/components/admin/admin.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -36,6 +39,11 @@ const routes: Routes = [
         component: AssetsComponent,
       },
       {
+        path: 'admin',
+        pathMatch: 'full',
+        component: AdminComponent,
+      },
+      {
         path: '**',
         redirectTo: 'stream',
       }
@@ -56,6 +64,7 @@ const routes: Routes = [
     CommonModule,
     MatButtonModule,
     RouterModule,
+    MatTabsModule,
     RouterModule.forChild(routes),
   ],
   exports: [
