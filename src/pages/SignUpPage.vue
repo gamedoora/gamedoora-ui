@@ -80,6 +80,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Signup",
+  name: "SignUpPage",
 });
 </script>

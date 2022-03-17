@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import SignupPage from "@/pages/SignupPage.vue";
+import SignupPage from "@/pages/SignUpPage.vue";
 
 describe("SignupPage page", () => {
   it("renders SignupPage Page", () => {
