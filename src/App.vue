@@ -62,12 +62,12 @@ export default defineComponent({
     window.removeEventListener("resize", this.onResize);
   },
   mounted() {
-    const noHeader = ["/", "/signup", "/forgot-password"];
+    const noHeader = ["/", "/SignUpPage", "/forgot-password"];
     this.showNav = !noHeader.includes(this.$route.path);
   },
   watch: {
     $route(to) {
-      const noHeader = ["/", "/signup", "/forgot-password"];
+      const noHeader = ["/", "/SignUpPage", "/forgot-password"];
       this.showNav = !noHeader.includes(to.path);
     },
   },
@@ -76,10 +76,12 @@ export default defineComponent({
 
 <style>
 #app {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Red Hat Text", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  background-color: #e4e4e4;
+  background-color: #ebeef5;
+  height: 100vh;
+  width: 100vw;
 }
 </style>

@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 14.x
+      - name: Use Node.js 16.x
         env:
           NODE_ENV: development
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 16.x
       - run: npm install 
       - run: npm run lint 
       - run: npm run test:unit  

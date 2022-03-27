@@ -60,6 +60,10 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "ProfilePage",
+  setup() {
+    return {
+    }
+  },
   props: {
     leftBarActive: Boolean,
     rightBarActive: Boolean,
