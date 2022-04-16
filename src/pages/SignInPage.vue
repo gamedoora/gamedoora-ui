@@ -113,6 +113,15 @@
       background-repeat: no-repeat;
     }
   }
+  // TODO: This should be a variable
+  @media (max-width: 995px){
+    .main {
+      display: block;
+      &__content {
+        display: none;
+      }
+    }
+  }
 </style>
 
 <script lang="ts">

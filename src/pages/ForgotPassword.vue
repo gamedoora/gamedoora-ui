@@ -20,10 +20,8 @@
             </div>
 
             <input
-              autofocus="autofocus"
               class="form-control margin-bottom-20 _email"
               placeholder="Email ID"
-              required="required"
               type="email"
             />
           </div>
