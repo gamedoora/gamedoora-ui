@@ -11,7 +11,7 @@
         <div class="reg-header">
           <h3>Forgot Your Password?</h3>
         </div>
-        <div class="input_container">
+        <div class="input-container">
           <div class="input-group margin-bottom-20">
             <div class="input-group-prepend">
               <span class="input-group-text"
@@ -20,7 +20,7 @@
             </div>
 
             <input
-              class="form-control margin-bottom-20 _email"
+              class="form-control margin-bottom-20 email"
               placeholder="Email ID"
               type="email"
             />
@@ -31,7 +31,7 @@
             <button
               type="button"
               @click="$router.push('studio')"
-              class="btn-u btn-block reset_pwd_btn"
+              class="btn-u btn-block reset-pwd-btn"
             >
               Reset Password
             </button>

@@ -34,7 +34,7 @@ export default defineComponent({
       rightBarActive: false,
       currentView: 'Studio',
       showNav: true,
-    }  as ThemeConfig;
+    } as ThemeConfig;
   },
   components: {
     Header,

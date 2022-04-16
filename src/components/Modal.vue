@@ -80,7 +80,6 @@
                     class="_visibility_radio"
                     data-name="_radio"
                     value="hidden"
-                    checked=""
                   />
                   <i class="fa fa-eye" aria-hidden="true"></i>
                   Hidden
@@ -111,7 +110,6 @@
                     class="_registration_radio"
                     data-name="_radio"
                     value="open"
-                    checked=""
                   />
                   <i class="fa fa-check-circle" aria-hidden="true"></i>
                   Open
@@ -168,7 +166,8 @@ export default defineComponent({
       const emitter = internalInstance?.appContext.config.globalProperties.emitter;
       
       emitter.on("modal:toggle", () => {
-        const ddata:any = internalInstance?.data;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const ddata = internalInstance?.data as any;
         ddata.modalShow = ddata.modalShow ? false : true;
         setTimeout(() => {
           ddata.anim = true;

@@ -28,7 +28,7 @@ jobs:
           echo VUE_APP_FIREBASE_DATABASEURL=${{ secrets.VUE_APP_FIREBASE_DATABASEURL }} >> .env
           cat .env
       - run: npm install 
-      - run: npm run lint 
+      - run: export CI=false && npm run lint 
       - run: npm run test:unit  
       - run: npm run build:dev
       - name: Deploy Gamedoora-UI
