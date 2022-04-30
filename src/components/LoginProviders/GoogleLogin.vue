@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, UserCredential } from "firebase/auth";
 import { firebaseApp } from '@/main';
 import { defineComponent } from "vue";
 
@@ -17,7 +17,7 @@ export default defineComponent({
   methods: {
     googleLogin() {
       signInWithPopup(auth, provider)
-      .then((result: any) => {
+      .then((result: UserCredential) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential ? credential.accessToken : null;
         const user = result.user;

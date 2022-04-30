@@ -21,21 +21,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import Header from "@/components/header.vue";
-import LeftNavigationNew from "@/components/LeftNavigationNew.vue";
-import RightNavigation from "@/components/rightNavigation.vue";
-import ThemeConfig from "@/interface";
+import { defineComponent } from 'vue';
+import Header from '@/components/header.vue';
+import LeftNavigationNew from '@/components/LeftNavigationNew.vue';
+import RightNavigation from '@/components/rightNavigation.vue';
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   data() {
     return {
       leftBarActive: true,
       rightBarActive: false,
-      currentView: "Studio",
+      currentView: 'Studio',
       showNav: true,
-    }  as ThemeConfig;
+    } as ThemeConfig;
   },
   components: {
     Header,
@@ -55,19 +54,19 @@ export default defineComponent({
   },
   created() {
     this.onResize();
-    window.addEventListener("resize", this.onResize);
+    window.addEventListener('resize', this.onResize);
   },
 
   beforeUnmount() {
-    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener('resize', this.onResize);
   },
   mounted() {
-    const noHeader = ["/", "/SignUpPage", "/forgot-password"];
+    const noHeader = ['/', '/SignUpPage', '/forgot-password'];
     this.showNav = !noHeader.includes(this.$route.path);
   },
   watch: {
     $route(to) {
-      const noHeader = ["/", "/SignUpPage", "/forgot-password"];
+      const noHeader = ['/', '/SignUpPage', '/forgot-password'];
       this.showNav = !noHeader.includes(to.path);
     },
   },
@@ -76,7 +75,7 @@ export default defineComponent({
 
 <style>
 #app {
-  font-family: "Red Hat Text", sans-serif;
+  font-family: 'Red Hat Text', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */

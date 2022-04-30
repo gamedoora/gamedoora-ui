@@ -5,7 +5,11 @@
 </template>
 
 <script lang="ts">
-import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { 
+  getAuth, 
+  signInWithPopup, 
+  FacebookAuthProvider, 
+  UserCredential } from "firebase/auth";
 import { firebaseApp } from '@/main';
 import { defineComponent } from "vue";
 
@@ -17,7 +21,7 @@ export default defineComponent({
   methods: {
     facebookLogin() {
       signInWithPopup(auth, facebookProvider)
-      .then((result: any) => {
+      .then((result: UserCredential) => {
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const token = credential ? credential.accessToken : null;
         const user = result.user;

@@ -1,4 +1,4 @@
-export default interface ThemeConfig {
+type ThemeConfig = {
   leftBarActive: boolean;
   rightBarActive: boolean;
   currentView: string;
