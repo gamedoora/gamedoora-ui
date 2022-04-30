@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { getAuth, signInWithPopup, TwitterAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, TwitterAuthProvider, UserCredential } from "firebase/auth";
 import { firebaseApp } from '@/main';
 import { defineComponent } from "vue";
 
@@ -17,7 +17,7 @@ export default defineComponent({
   methods: {
     twitterLogin() {
       signInWithPopup(auth, twitterProvider)
-      .then((result: any) => {
+      .then((result: UserCredential) => {
         const credential = TwitterAuthProvider.credentialFromResult(result);
         const token = credential ? credential.accessToken : null;
         const user = result.user;
