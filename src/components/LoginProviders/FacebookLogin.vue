@@ -5,13 +5,14 @@
 </template>
 
 <script lang="ts">
-import { 
-  getAuth, 
-  signInWithPopup, 
-  FacebookAuthProvider, 
-  UserCredential } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  FacebookAuthProvider,
+  UserCredential,
+} from 'firebase/auth';
 import { firebaseApp } from '@/main';
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 const facebookProvider = new FacebookAuthProvider();
 const auth = getAuth(firebaseApp);
@@ -21,22 +22,22 @@ export default defineComponent({
   methods: {
     facebookLogin() {
       signInWithPopup(auth, facebookProvider)
-      .then((result: UserCredential) => {
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const token = credential ? credential.accessToken : null;
-        const user = result.user;
-        console.log(credential, token, user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        console.error(errorCode, errorMessage, email, credential);
-      });
-    }
-  }
-})
+        .then((result: UserCredential) => {
+          const credential = FacebookAuthProvider.credentialFromResult(result);
+          const token = credential ? credential.accessToken : null;
+          const { user } = result;
+          console.info(credential, token, user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const { email } = error;
+          const credential = FacebookAuthProvider.credentialFromError(error);
+          console.error(errorCode, errorMessage, email, credential);
+        });
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>

@@ -3,7 +3,9 @@
     <div class="main__login">
       <div class="main__login-section">
         <p>
-          Don't have an account? <router-link :to="{ name: 'SignUpPage' }">Sign up</router-link>
+          Don't have an account?
+          <!-- TODO: Add when page is available
+          <router-link :to="{ name: 'SignUpPage' }">Sign up</router-link> -->
         </p>
         <div class="main__login-form">
           <h1>Welcome to <span>GameDoora</span></h1>
@@ -14,8 +16,22 @@
             animation, and film production pipeline.
           </p>
           <form>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-label="Email"
+              aria-describedby="emailHelp"
+              autocomplete="email"
+              placeholder="Enter email">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              aria-label="Password"
+              autocomplete="current-password"
+              aria-describedby="emailHelp"
+              placeholder="Enter Password">
             <button type="submit">Login</button>
           </form>
           <div class="main__login-social">
@@ -131,8 +147,8 @@ import GithubLogin from '@/components/LoginProviders/GithubLogin.vue';
 import FacebookLogin from '@/components/LoginProviders/FacebookLogin.vue';
 import TwitterLogin from '@/components/LoginProviders/TwitterLogin.vue';
 
-export default defineComponent ({
-  name: "SignInPage",
+export default defineComponent({
+  name: 'SignInPage',
   props: {
   },
   components: {

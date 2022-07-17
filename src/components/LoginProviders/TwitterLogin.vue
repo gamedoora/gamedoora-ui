@@ -5,9 +5,11 @@
 </template>
 
 <script lang="ts">
-import { getAuth, signInWithPopup, TwitterAuthProvider, UserCredential } from "firebase/auth";
+import {
+  getAuth, signInWithPopup, TwitterAuthProvider, UserCredential,
+} from 'firebase/auth';
 import { firebaseApp } from '@/main';
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 const twitterProvider = new TwitterAuthProvider();
 const auth = getAuth(firebaseApp);
@@ -17,22 +19,22 @@ export default defineComponent({
   methods: {
     twitterLogin() {
       signInWithPopup(auth, twitterProvider)
-      .then((result: UserCredential) => {
-        const credential = TwitterAuthProvider.credentialFromResult(result);
-        const token = credential ? credential.accessToken : null;
-        const user = result.user;
-        console.log(credential, token, user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = TwitterAuthProvider.credentialFromError(error);
-        console.error(errorCode, errorMessage, email, credential);
-      });
-    }
-  }
-})
+        .then((result: UserCredential) => {
+          const credential = TwitterAuthProvider.credentialFromResult(result);
+          const token = credential ? credential.accessToken : null;
+          const { user } = result;
+          console.info(credential, token, user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const { email } = error;
+          const credential = TwitterAuthProvider.credentialFromError(error);
+          console.error(errorCode, errorMessage, email, credential);
+        });
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
