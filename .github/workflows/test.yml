@@ -23,5 +23,5 @@ jobs:
     - run: npm run lint
     - run: npm run build:dev
     - run: npm run build
-    - run: npm run test:uni
+    - run: npm run test:unit
     
