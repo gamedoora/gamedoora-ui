@@ -18,7 +18,7 @@
           <form>
             <input
               type="email"
-              class="form-control"
+              class=""
               id="email"
               aria-label="Email"
               aria-describedby="emailHelp"
@@ -26,7 +26,7 @@
               placeholder="Enter email">
             <input
               type="password"
-              class="form-control"
+              class=""
               id="password"
               aria-label="Password"
               autocomplete="current-password"
@@ -82,11 +82,16 @@
       &-form {
         margin-top: 5.5rem;
         h1 {
+          @apply text-4xl;
+          @apply pb-4;
           span {
             background: #ff5a09;
             color: white;
             padding: 0.2rem 0.5rem;
           }
+        }
+        h3 {
+          @apply text-2xl;
         }
         form {
           margin-top: 3rem;
@@ -113,6 +118,7 @@
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
+          list-style: none;
           li {
             margin: .5rem;
             img {
