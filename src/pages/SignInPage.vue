@@ -129,7 +129,7 @@
       }
     }
     &__content {
-      background: url('~@/assets/images/background.png');
+      background: url('@/assets/images/background.png');
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
       background-repeat: no-repeat;
