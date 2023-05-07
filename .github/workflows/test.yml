@@ -13,14 +13,15 @@ jobs:
     timeout-minutes: 15
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 16.x
+    - name: Use Node.js 20.x
       env:
         NODE_ENV: development
       uses: actions/setup-node@v2
       with:
-        node-version: 16.x
+        node-version: 20.x
     - run: npm install
     - run: |
         env | grep "^(NEXT|GAMEDOORA)" | sed 's/\(.*\)=\(.*\)/\1="\2"/g' >> .env
+        cat .env
         npm run build
     
