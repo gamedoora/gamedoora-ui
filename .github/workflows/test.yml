@@ -20,5 +20,7 @@ jobs:
       with:
         node-version: 16.x
     - run: npm install
-    - run: npm run build
+    - run: |
+        env | grep "^(NEXT|GAMEDOORA)" | sed 's/\(.*\)=\(.*\)/\1="\2"/g' >> .env
+        npm run build
     
