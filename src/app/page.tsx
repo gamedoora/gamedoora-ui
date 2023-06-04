@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main>
-      <h1 className="text-[32px]">Gamedoora coming soon</h1>
+      <Link href={'/login'} className="text-[32px]">Goto login</Link>
     </main>
   );
 }
