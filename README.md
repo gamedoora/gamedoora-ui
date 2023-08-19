@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+UI built in NextJs (typescript) for gamedoora, a social and collaboration hub for everyone involved in gaming, animation, and film production pipeline
 
 ## Getting Started
 
