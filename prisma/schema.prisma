@@ -15,7 +15,8 @@ model User {
   name       String
   email      String   @unique
   phone      String
-  avatar     String
+  password   String
+  avatar     String?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
