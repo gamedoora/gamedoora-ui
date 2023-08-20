@@ -12,7 +12,7 @@ interface IUser {
   phone: string;
 }
 
-const fetchUserByEmail = async (slug: string): Promise<IUser> => {
+const fetchUserByUser = async (slug: string): Promise<IUser> => {
   const user = await prisma.user.findUnique({
     where: {
       userID: slug,
@@ -38,7 +38,7 @@ export default async function Profile({
     slug: string;
   };
 }) {
-  const user = await fetchUserByEmail(params.slug);
+  const user = await fetchUserByUser(params.slug);
   return (
     <div>
       <div className="bg-gray-200 flex">
