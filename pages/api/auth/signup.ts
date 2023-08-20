@@ -18,14 +18,14 @@ export default async function handler(
       {
         valid: validator.isLength(name, {
           min: 1,
-          max: 20,
+          max: 50,
         }),
-        errorMessage: 'First name is too long/invalid',
+        errorMessage: 'Name is too long/invalid',
       },
 
       {
         valid: validator.isEmail(email),
-        errorMessage: 'First name is too long/invalid',
+        errorMessage: 'Incorrect email',
       },
       {
         valid: validator.isMobilePhone(phone),
