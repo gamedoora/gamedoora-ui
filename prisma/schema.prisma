@@ -17,6 +17,7 @@ model User {
   phone      String
   password   String
   avatar     String?
+  userID     String   @unique
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }

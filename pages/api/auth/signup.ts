@@ -12,7 +12,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'POST') {
-    const { name, email, password, phone } = req.body;
+    const { name, userID, email, password, phone, avatar } = req.body;
     const errors: string[] = [];
     const validationSchema = [
       {
@@ -22,7 +22,13 @@ export default async function handler(
         }),
         errorMessage: 'Name is too long/invalid',
       },
-
+      {
+        valid: validator.isLength(userID, {
+          min: 1,
+          max: 50,
+        }),
+        errorMessage: 'Name is too long/invalid',
+      },
       {
         valid: validator.isEmail(email),
         errorMessage: 'Incorrect email',
@@ -46,14 +52,25 @@ export default async function handler(
         errorMessage: errors[0],
       });
     }
+
     const userWithEmail = await prisma.user.findUnique({
       where: { email },
     });
     if (userWithEmail) {
       return res.status(400).json({
-        errorMessage: 'Email is already exists',
+        errorMessage: 'Email already exists',
       });
     }
+
+    const userWithUserID = await prisma.user.findUnique({
+      where: { userID },
+    });
+    if (userWithEmail) {
+      return res.status(400).json({
+        errorMessage: 'UserID taken',
+      });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await prisma.user.create({
       data: {
@@ -61,12 +78,15 @@ export default async function handler(
         password: hashedPassword,
         phone,
         email,
+        userID,
+        avatar,
       },
     });
     const alg = 'HS256';
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
     const token = await new jose.SignJWT({
       email: user.email,
+      userID: user.userID,
     })
       .setProtectedHeader({ alg })
       .setExpirationTime('24h')
@@ -80,6 +100,8 @@ export default async function handler(
       name: user.name,
       email: user.email,
       phone: user.phone,
+      userID: user.userID,
+      avatar: user.avatar,
     });
   }
 }

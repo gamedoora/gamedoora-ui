@@ -1,0 +1,1 @@
+export { useFetchFeed } from './query';

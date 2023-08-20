@@ -30,6 +30,7 @@ export default async function handler(
       email: true,
       avatar: true,
       phone: true,
+      userID: true,
     },
   });
 
@@ -41,9 +42,5 @@ export default async function handler(
 
   return res.json({
     me: user,
-    id: user.id,
-    name: user.name,
-    avatar: user.avatar,
-    phone: user.phone,
   });
 }
