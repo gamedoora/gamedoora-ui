@@ -3,5 +3,5 @@
  * @returns Global navbar
  */
 export default function Navbar() {
-  return <div>Navbar</div>;
+  return <div>This is a demo navbar</div>;
 }

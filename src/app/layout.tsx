@@ -1,8 +1,7 @@
-import Navbar from './components/Navbar';
+import ReactQueryProvider from './components/ReactQueryProvider';
 import AuthContext from './context/AuthContext';
 import './globals.css';
 import { Inter } from 'next/font/google';
-import Sidebar from './components/Sidebar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,9 +20,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="bg-gray-100 min-h-screen w-screen">
           <AuthContext>
-            <main>
-              {children}
-            </main>
+            <ReactQueryProvider>
+              <main>{children}</main>
+            </ReactQueryProvider>
           </AuthContext>
         </div>
       </body>
