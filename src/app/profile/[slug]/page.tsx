@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { notFound } from 'next/navigation';
+import { getServerSession } from 'next-auth';
 
 const prisma = new PrismaClient();
 
@@ -12,24 +13,24 @@ interface IUser {
   phone: string;
 }
 
-const fetchUserByUser = async (slug: string): Promise<IUser> => {
-  const user = await prisma.user.findUnique({
-    where: {
-      userID: slug,
-    },
-    select: {
-      name: true,
-      userID: true,
-      avatar: true,
-      email: true,
-      phone: true,
-    },
-  });
-  if (!user) {
-    notFound();
-  }
-  return user;
-};
+// const fetchUserByUser = async (slug: string): Promise<IUser> => {
+//   const user = await prisma.user.findUnique({
+//     where: {
+//       userID: slug,
+//     },
+//     select: {
+//       name: true,
+//       userID: true,
+//       avatar: true,
+//       email: true,
+//       phone: true,
+//     },
+//   });
+//   if (!user) {
+//     notFound();
+//   }
+//   return user;
+// };
 
 export default async function Profile({
   params,
@@ -38,21 +39,29 @@ export default async function Profile({
     slug: string;
   };
 }) {
-  const user = await fetchUserByUser(params.slug);
+  // const user = await fetchUserByUser(params.slug);
+  const session = await getServerSession();
   return (
     <>
-      <div>
-        <div className="bg-gray-200 flex">
-          <aside>
-            <img className="w-60" src={`${user.avatar}`} alt="User Photo"></img>
-          </aside>
-          <div className="p-2">
-            <div>{user.name}</div>
-            <div>{user.email}</div>
-            <div>{user.phone}</div>
+      {session?.user?.name ? (
+        <div>
+          <div className="bg-gray-200 flex">
+            <aside>
+              <img
+                className="w-60"
+                src={`${session.user.image}`}
+                alt="User Photo"
+              ></img>
+            </aside>
+            <div className="p-2">
+              <div>{session?.user?.name}</div>
+              <div>{session?.user?.email}</div>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        'Not logged in'
+      )}
     </>
   );
 }

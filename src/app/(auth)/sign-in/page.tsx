@@ -1,9 +1,15 @@
-import Image from 'next/image';
+'use client';
 import Link from 'next/link';
 import Hero from '../components/Hero';
 import Brand from '../components/Brand';
+import { signIn, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 export default function SignIn() {
+  const { data: session } = useSession();
+  if (session) {
+    redirect(`/profile/${session?.user?.email}`);
+  }
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="flex justify-center h-screen">
@@ -62,6 +68,15 @@ export default function SignIn() {
                   </button>
                 </div>
               </form>
+
+              <div className="mt-6">
+                <button
+                  onClick={() => signIn()}
+                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                >
+                  Sign In with GitHub
+                </button>
+              </div>
 
               <p className="mt-6 text-sm text-center text-gray-400">
                 Don&#x27;t have an account yet?{' '}
