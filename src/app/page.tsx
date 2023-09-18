@@ -8,8 +8,8 @@ export default function Home() {
   const { data, isError, isLoading } = useFetchFeed('hybridx');
   return (
     <main className="grid">
-      <Link href={'/login'} className="text-[32px]">
-        Goto login
+      <Link href={'/sign-in'} className="text-[32px]">
+        Goto Sign-in
       </Link>
       <Link href={'/sign-up'} className="text-[32px]">
         Goto Sign-up

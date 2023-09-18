@@ -40,17 +40,19 @@ export default async function Profile({
 }) {
   const user = await fetchUserByUser(params.slug);
   return (
-    <div>
-      <div className="bg-gray-200 flex">
-        <aside>
-          <img className="w-60" src={`${user.avatar}`} alt="User Photo"></img>
-        </aside>
-        <div className="p-2">
-          <div>{user.name}</div>
-          <div>{user.email}</div>
-          <div>{user.phone}</div>
+    <>
+      <div>
+        <div className="bg-gray-200 flex">
+          <aside>
+            <img className="w-60" src={`${user.avatar}`} alt="User Photo"></img>
+          </aside>
+          <div className="p-2">
+            <div>{user.name}</div>
+            <div>{user.email}</div>
+            <div>{user.phone}</div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
