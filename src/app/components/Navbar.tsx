@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import GitHubAuthButton from './GitHubAuthButton';
+import AuthButton from './AuthButton';
 
 
 /**
@@ -12,7 +12,7 @@ export default function Navbar() {
     <div>
       <span>This is a demo navbar</span>
       <Link href={'/'}> Home </Link>
-      <GitHubAuthButton />
+      <AuthButton />
     </div>
   );
 }

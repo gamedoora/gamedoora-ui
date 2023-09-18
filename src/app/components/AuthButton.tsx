@@ -1,7 +1,7 @@
 'use client';
 import { signOut, useSession, signIn } from 'next-auth/react';
 
-export default function GitHubAuthButton() {
+export default function AuthButton() {
   const { data: session } = useSession();
   if (session) {
     return (

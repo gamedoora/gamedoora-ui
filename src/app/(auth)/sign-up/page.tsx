@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import Hero from '../components/Hero';
 import Brand from '../components/Brand';
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 export default function SignUp() {
+  const { data: session } = useSession();
+  if (session) {
+    redirect(`/profile/${session?.user?.email}`);
+  }
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="flex justify-center h-screen">
