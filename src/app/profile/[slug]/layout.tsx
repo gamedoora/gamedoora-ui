@@ -1,4 +1,5 @@
 import Navbar from '@/app/components/Navbar';
+import Sidebar from '@/app/components/Sidebar';
 
 export default function ProfileLayout({
   children,
@@ -10,9 +11,12 @@ export default function ProfileLayout({
   };
 }) {
   return (
-    <main>
-      <Navbar />
-      {children}
+    <main className="flex gap-4">
+      <Sidebar />
+      <div className='w-full'>
+        <Navbar />
+        {children}
+      </div>
     </main>
   );
 }

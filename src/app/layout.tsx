@@ -3,6 +3,8 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
 import SessionProvider from './(auth)/components/SessionProvider';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,9 +24,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <div className="bg-gray-100 min-h-screen w-screen">
           <SessionProvider>
-            <ReactQueryProvider>
-              <main>{children}</main>
-            </ReactQueryProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
           </SessionProvider>
         </div>
       </body>

@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 export default function SignUp() {
   const { data: session } = useSession();
   if (session) {
-    redirect(`/profile/${session?.user?.email}`);
+    redirect(`/`);
   }
   return (
     <div className="bg-white dark:bg-gray-900">

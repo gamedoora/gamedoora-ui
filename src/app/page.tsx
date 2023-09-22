@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { useFetchFeed } from '../../services/feed';
 import { TFeed } from '../../services/feed/type';
-import Navbar from './components/Navbar';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 
 export default function Home() {
   const { data, isError, isLoading } = useFetchFeed('hybridx');
@@ -14,25 +14,19 @@ export default function Home() {
     redirect('/sign-in');
   }
   return (
-    <main className="grid">
-      <Navbar />
-      <Link href={'/sign-in'} className="text-[32px]">
-        Goto Sign-in
-      </Link>
-      <Link href={'/sign-up'} className="text-[32px]">
-        Goto Sign-up
-      </Link>
-      <Link href={'/profile/hybridx'} className="text-[32px]">
-        Goto {`Hybridx's`} profile
-      </Link>
-      <div>The following is some feed data</div>
-      <div>
-        {data?.feed.map((f: TFeed) => (
-          <div className="p-4 bg-blue-200 w-40" key={f.id}>
-            <p>{f.title}</p>
-            <p>{f.author}</p>
-          </div>
-        ))}
+    <main className="flex gap-2">
+      <Sidebar />
+      <div className="w-full">
+        <Navbar />
+        <div>
+          <div className="p-2 m-2">The following is some feed data</div>
+          {data?.feed.map((f: TFeed) => (
+            <div className="p-4 m-4 bg-blue-200" key={f.id}>
+              <p>{f.title}</p>
+              <p>{f.author}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
