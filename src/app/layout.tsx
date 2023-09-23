@@ -1,7 +1,10 @@
 import ReactQueryProvider from './components/ReactQueryProvider';
-import AuthContext from './context/AuthContext';
 import './globals.css';
 import { Inter } from 'next/font/google';
+import { getServerSession } from 'next-auth';
+import SessionProvider from './(auth)/components/SessionProvider';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,20 +13,19 @@ export const metadata = {
   description: 'Gamedoora is here to revolutionize the gaming industry',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession();
   return (
     <html lang="en">
       <body className={inter.className}>
         <div className="bg-gray-100 min-h-screen w-screen">
-          <AuthContext>
-            <ReactQueryProvider>
-              <main>{children}</main>
-            </ReactQueryProvider>
-          </AuthContext>
+          <SessionProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </SessionProvider>
         </div>
       </body>
     </html>
