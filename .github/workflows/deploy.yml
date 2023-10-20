@@ -1,4 +1,4 @@
-name: Test & Build Gamedoora-UI
+name: Deployment
 
 on:
   workflow_dispatch:
