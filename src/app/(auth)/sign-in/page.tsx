@@ -41,7 +41,7 @@ export default function SignInTest() {
             <div className="flex justify-center h-screen">
                 <LoginBgImage />
                 <div id="triangle" className="my-auto">
-                    <div className="w-20 h-20 bg-white transform -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-lg absolute"></div>
+                    <div className="w-20 h-20 bg-white transform -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-bl-lg	 absolute"></div>
                 </div>
                 <div className="w-full rounded-xl flex flex-col items-center  max-w-lg mx-auto"> 
                     <div className='flex-col my-auto'>
@@ -99,7 +99,7 @@ export default function SignInTest() {
                             </div>
                         </div>
                     </div>
-                    <div id="login-footer" className="flex flex-row mb-2 mt-auto w-full justify-between">
+                    <div id="login-footer" className="flex flex-row mb-2 mt-auto w-full justify-around">
                         <div className="w-20 h-10">English</div>
                         <div className="flex flex-row gap">
                             <div className="h-10 flex flex-row gap-x-8">
