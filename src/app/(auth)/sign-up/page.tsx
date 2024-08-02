@@ -14,7 +14,6 @@ export default function SignUp() {
     <div className="bg-white dark:bg-gray-900">
       <div className="flex justify-center h-screen">
         <Hero />
-
         <div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
           <div className="flex-1">
             <Brand signIn={false} />

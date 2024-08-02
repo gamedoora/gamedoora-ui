@@ -18,7 +18,7 @@ export default function SocialButton({ color, iconPath, socialName, onClick }: S
       onClick={onClick}
     >
       <Image 
-        src={`/${iconPath}`} // Assuming icons are in the 'public/icons' folder
+        src={`${iconPath}`}
         alt="social"
         height={20}
         width={20}
