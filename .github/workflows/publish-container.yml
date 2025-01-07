@@ -23,15 +23,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}
+        run: |
+          podman login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+          podman build -t gamedoora-ui .
+          podman tag gamedoora-ui ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}
+          podman push gamedoora-ui ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}
