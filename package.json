@@ -13,7 +13,7 @@
     "@prisma/client": "^4.15.0",
     "@tanstack/react-query": "^4.33.0",
     "autoprefixer": "10.4.14",
-    "axios": "^1.4.0",
+    "axios": "^1.7.4",
     "bcrypt": "^5.1.0",
     "cookies-next": "^2.1.2",
     "date-fns": "^2.30.0",
