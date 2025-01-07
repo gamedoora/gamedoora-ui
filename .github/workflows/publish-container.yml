@@ -39,13 +39,13 @@ jobs:
       # Step 4: Tag the image with the appropriate tag
       - name: Tag the image
         run: |
-          podman tag gamedoora-ui ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}
+          podman tag gamedoora-ui ghcr.io/${{ github.repository }}:${{ github.event.inputs.tag }}
 
       # Step 5: Push the image to GitHub Container Registry (GHCR)
       - name: Push image to GHCR
         run: |
-          podman push ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}
+          podman push ghcr.io/${{ github.repository }}:${{ github.event.inputs.tag }}
 
       # Step 6: Output image URL for reference
       - name: Output pushed image URL
-        run: echo "Image pushed to ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}"
+        run: echo "Image pushed to ghcr.io/${{ github.repository }}:${{ github.event.inputs.tag }}"
