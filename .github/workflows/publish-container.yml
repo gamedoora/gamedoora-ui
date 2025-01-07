@@ -19,12 +19,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to GitHub Container Registry
-        run: |
-          podman login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-          podman build -t gamedoora-ui .
-          podman tag gamedoora-ui ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}
-          podman push gamedoora-ui ghcr.io/${{ github.repository }}/gamedoora-ui:${{ github.event.inputs.tag }}
+      # Step 2: Log in to GitHub Container Registry (GHCR) using Podman
+      - name: Log in to GHCR
+        uses: redhat-actions/podman-login@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+
+      # Step 3: Build the image using Buildah (works with Podman)
+      - name: Build Image
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: gamedoora-ui
+          tags: latest ${{ github.sha }}
+          containerfiles: |
+            ./Containerfile  # Replace with Dockerfile if using Docker
+
+      # Step 4: Push the image to GHCR
+      - name: Push Image to GHCR
+        id: push-to-ghcr
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: ghcr.io/${{ github.repository }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 5: Print the pushed image URL
+      - name: Print image URL
+        run: echo "Image pushed to ${{ steps.push-to-ghcr.outputs.registry-paths }}"
