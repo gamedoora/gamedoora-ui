@@ -12,6 +12,20 @@ yarn dev
 pnpm dev
 ```
 
+Alternatively, you can run the application using Podman/Docker:
+
+First, pull the image:
+
+```bash
+podman pull ghcr.io/gamedoora/gamedoora-ui:latest
+```
+
+Then, run the container:
+
+```bash
+podman run -d --name gamedoora-ui -p 3000:3000 ghcr.io/gamedoora/gamedoora-ui:latest
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
