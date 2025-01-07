@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Set the working directory
 WORKDIR /app
@@ -7,8 +7,9 @@ WORKDIR /app
 # Copy the rest of the application code
 COPY . .
 
-# Install dependencies
-RUN cp -n .env.example .env || : && npm install && npm run build
+RUN cp -n .env.example .env || : 
+RUN npm install
+RUN npm run build
 
 # Build the Next.js application
 RUN npm run build
