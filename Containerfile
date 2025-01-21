@@ -9,7 +9,7 @@ RUN cp .env.example .env
 RUN npm run build
 
 # Stage 2: Production Stage
-FROM node:22-alpine
+FROM oven/bun:1.1.45
 WORKDIR /app
 
 # Copy production build and dependencies from the builder
@@ -23,4 +23,4 @@ COPY --from=builder /app/.env ./
 EXPOSE 3000
 
 # Start the app
-CMD ["npm", "start"]
+CMD ["bun", "start"]
