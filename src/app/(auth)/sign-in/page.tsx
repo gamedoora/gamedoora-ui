@@ -29,8 +29,6 @@ export default function SignInTest() {
 
   const handleLogin = async () => {};
 
-  const socialLoginClick = () => {};
-
   return (
     <div className="bg-white">
       <div className="flex justify-center h-screen">
@@ -111,25 +109,18 @@ export default function SignInTest() {
                       color="#D62D20"
                       iconPath="google.svg"
                       socialName="Google"
-                      onClick={socialLoginClick}
+                      onClick={() => {
+                        signIn('google');
+                      }}
+                      disabled={true}
                     />
                     <SocialButton
                       color="#24292E"
                       iconPath="git.svg"
                       socialName="GitHub"
-                      onClick={() => signIn()}
-                    />
-                    <SocialButton
-                      color="#000000"
-                      iconPath="x.svg"
-                      socialName="X"
-                      onClick={socialLoginClick}
-                    />
-                    <SocialButton
-                      color="#3B5998"
-                      iconPath="meta.svg"
-                      socialName="Facebook"
-                      onClick={socialLoginClick}
+                      onClick={() => {
+                        signIn('github');
+                      }}
                     />
                   </div>
                 </div>
