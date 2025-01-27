@@ -1,16 +1,16 @@
 import { NextAuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
-import KeycloakProvider from 'next-auth/providers/keycloak';
+import GoogleProvider from 'next-auth/providers/google';
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID ?? '',
       clientSecret: process.env.GITHUB_SECRET ?? '',
     }),
-    KeycloakProvider({
-      clientId: process.env.KEYCLOAK_ID ?? '',
-      clientSecret: process.env.KEYCLOAK_SECRET ?? '',
-      issuer: process.env.KEYCLOAK_ISSUER ?? '',
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
     }),
   ],
 };

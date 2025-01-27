@@ -1,5 +1,6 @@
 'use client';
 import { signOut, useSession, signIn } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 export default function AuthButton() {
   const { data: session } = useSession();
@@ -7,7 +8,9 @@ export default function AuthButton() {
     return (
       <button
         className="w-28 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-        onClick={() => signOut()}
+        onClick={() => {
+          signOut({ callbackUrl: '/sign-in' });
+        }}
       >
         Sign Out
       </button>

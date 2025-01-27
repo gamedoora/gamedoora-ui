@@ -11,7 +11,7 @@ export default function ProfileLayout({
   };
 }) {
   return (
-    <main className="flex gap-4">
+    <main className="flex">
       <Sidebar />
       <div className='w-full'>
         <Navbar />
