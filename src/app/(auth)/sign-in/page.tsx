@@ -28,12 +28,7 @@ export default function SignInTest() {
   };
 
   const handleLogin = async () => {
-    console.log("Login button clicked"); // Debugging
-    try {
-      await signIn('github');
-    } catch (error) {
-      console.error("Sign-in error:", error);
-    }
+    await signIn('github');
   };
 
   return (
