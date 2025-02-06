@@ -107,17 +107,17 @@ export default function SignInTest() {
                 </div>
               </form>
 
-              <div id="socials" className="flex flex-col mt-6 items-center">
+              <div className="flex flex-col mt-6 items-center">
                 <SocialButton
                   color="#24292E"
                   iconPath="git.svg"
                   socialName="GitHub"
-                  onClick={handleLogin}
+                  // onClick={handleLogin}
                 />
               </div>
-              <div id="create-account" className="mt-5 w-full h-5">
+              <div className="mt-5 w-full h-5">
                 <Link
-                  href={'/'}
+                  href={'/sign-up'}
                   className="font-semibold text-sm"
                   style={{ color: '#FFA04D' }}
                 >

@@ -6,7 +6,7 @@ interface SocialButtonProps {
   color: string;
   iconPath: string;
   socialName: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function SocialButton({
