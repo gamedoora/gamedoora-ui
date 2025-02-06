@@ -111,28 +111,28 @@ export default function SignInTest() {
                   <div className=" mx-1 w-4 h-4">or</div>
                   <div className="flex-auto w-1/2 mt-3 border-t border-gray-400"></div>
                 </div>
-                <div id="socials" className="flex flex-col mt-6 items-center">
-                  <div className="grid grid-cols-2 grid-rows-2 gap-3">
-                    <SocialButton
-                      color="#D62D20"
-                      iconPath="google.svg"
-                      socialName="Google"
-                      onClick={() => {
-                        signIn('google');
-                      }}
-                      disabled={true}
-                    />
-                    <SocialButton
-                      color="#24292E"
-                      iconPath="git.svg"
-                      socialName="GitHub"
-                      onClick={() => {
-                        signIn('github');
-                      }}
-                    />
-                  </div>
-                </div>
               </form>
+              <div id="socials" className="flex flex-col mt-6 items-center">
+                <div className="grid grid-cols-2 grid-rows-2 gap-3">
+                  <SocialButton
+                    color="#D62D20"
+                    iconPath="google.svg"
+                    socialName="Google"
+                    onClick={() => {
+                      signIn('google');
+                    }}
+                    disabled={true}
+                  />
+                  <SocialButton
+                    color="#24292E"
+                    iconPath="git.svg"
+                    socialName="GitHub"
+                    onClick={() => {
+                      signIn('github');
+                    }}
+                  />
+                </div>
+              </div>
               <div id="create-account" className="mt-5 w-full h-5">
                 <Link
                   href={'/'}
