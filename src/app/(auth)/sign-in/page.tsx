@@ -27,8 +27,13 @@ export default function SignInTest() {
     setPassword(event.target.value);
   };
 
-  const handleLogin = () => {
-    signIn('github');
+  const handleLogin = async () => {
+    console.log("Login button clicked"); // Debugging
+    try {
+      await signIn('github');
+    } catch (error) {
+      console.error("Sign-in error:", error);
+    }
   };
 
   return (
@@ -112,7 +117,7 @@ export default function SignInTest() {
                   color="#24292E"
                   iconPath="git.svg"
                   socialName="GitHub"
-                  // onClick={handleLogin}
+                  onClick={handleLogin}
                 />
               </div>
               <div className="mt-5 w-full h-5">
