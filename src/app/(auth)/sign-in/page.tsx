@@ -28,7 +28,13 @@ export default function SignInTest() {
   };
 
   const handleLogin = () => {
-    signIn();
+    console.log('login start');
+    try {
+      signIn();
+    } catch (error) {
+      console.log('error', error);
+    }
+    console.log('login start');
   };
 
   return (
