@@ -106,22 +106,14 @@ export default function SignInTest() {
                   <div className="flex-auto w-1/2 mt-3 border-t border-gray-400"></div>
                 </div>
               </form>
+
               <div id="socials" className="flex flex-col mt-6 items-center">
-                <div className="grid grid-cols-2 grid-rows-2 gap-3">
                 <SocialButton
-                    color="#24292E"
-                    iconPath="git.svg"
-                    socialName="GitHub"
-                    onClick={handleLogin}
-                  />
-                  <SocialButton
-                    color="#D62D20"
-                    iconPath="google.svg"
-                    socialName="Google"
-                    onClick={handleLogin}
-                    disabled={true}
-                  />
-                </div>
+                  color="#24292E"
+                  iconPath="git.svg"
+                  socialName="GitHub"
+                  onClick={handleLogin}
+                />
               </div>
               <div id="create-account" className="mt-5 w-full h-5">
                 <Link
