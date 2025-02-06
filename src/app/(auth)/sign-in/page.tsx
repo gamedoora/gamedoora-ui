@@ -28,13 +28,7 @@ export default function SignInTest() {
   };
 
   const handleLogin = () => {
-    console.log('login start');
-    try {
-      signIn();
-    } catch (error) {
-      console.log('error', error);
-    }
-    console.log('login start');
+    signIn('github');
   };
 
   return (
@@ -127,9 +121,7 @@ export default function SignInTest() {
                     color="#24292E"
                     iconPath="git.svg"
                     socialName="GitHub"
-                    onClick={() => {
-                      signIn('github');
-                    }}
+                    onClick={handleLogin}
                   />
                 </div>
               </div>
