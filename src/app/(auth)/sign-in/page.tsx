@@ -85,13 +85,13 @@ export default function SignInTest() {
                       style={{ color: '#26221F' }}
                     >
                       Having trouble logging in?&nbsp;
-                      <Link
+                      <a
                         href={'/sign-test'}
                         className="font-medium text-xsm"
                         style={{ color: '#FFA04D' }}
                       >
                         Forgot username or password
-                      </Link>
+                      </a>
                     </p>
                   </div>
                 </div>
