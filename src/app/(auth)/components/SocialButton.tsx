@@ -1,5 +1,4 @@
 'use client';
-import { Button } from '@mui/material';
 import Image from 'next/image';
 
 interface SocialButtonProps {
@@ -18,10 +17,8 @@ export default function SocialButton({
   onClick,
 }: SocialButtonProps) {
   return (
-    <Button
-      variant="contained"
-      style={{ borderRadius: '24px', backgroundColor: color }}
-      className="font-medium font-roboto h-12 w-36"
+    <button
+      className="inline-flex items-center gap-2 px-4 py-2 text-white bg-gray-900 rounded-lg shadow-md hover:bg-gray-800 transition focus:outline-none focus:ring-2 focus:ring-gray-600"
       onClick={onClick}
       disabled={disabled}
     >
@@ -33,6 +30,6 @@ export default function SocialButton({
         className="mr-2"
       />
       {socialName}
-    </Button>
+    </button>
   );
 }
