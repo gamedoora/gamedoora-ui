@@ -103,6 +103,9 @@ export default function SignInTest() {
                   <div className=" mx-1 w-4 h-4">or</div>
                   <div className="flex-auto w-1/2 mt-3 border-t border-gray-400"></div>
                 </div>
+                <button className="w-24 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                  Sign In
+                </button>
                 <div id="socials" className="flex flex-col mt-6 items-center">
                   <div className="grid grid-cols-2 grid-rows-2 gap-3">
                     <SocialButton
@@ -122,12 +125,6 @@ export default function SignInTest() {
                         signIn('github');
                       }}
                     />
-                    <button
-                      className="w-24 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-                      
-                    >
-                      Sign In
-                    </button>
                   </div>
                 </div>
               </form>
