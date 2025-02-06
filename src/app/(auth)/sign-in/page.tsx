@@ -119,7 +119,7 @@ export default function SignInTest() {
                       iconPath="git.svg"
                       socialName="GitHub"
                       onClick={() => {
-                        signIn('github');
+                        signIn();
                       }}
                     />
                   </div>
