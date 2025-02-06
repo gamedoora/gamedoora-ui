@@ -1,7 +1,6 @@
 'use client';
 import { Button } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
 
 interface SocialButtonProps {
   disabled?: boolean;
