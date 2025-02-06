@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 import { getServerSession } from 'next-auth';
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 export default async function Profile({
   params,
