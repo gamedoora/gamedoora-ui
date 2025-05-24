@@ -20,6 +20,8 @@ export default function EditProfile() {
     experience: '',
     skills: [] as string[],
     title: '',
+    avatar: '',
+    github: '',
   });
   
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -35,19 +37,62 @@ export default function EditProfile() {
 
   // Populate form with existing user data
   useEffect(() => {
-    if (user || session?.user) {
-      const displayUser = user || session?.user;
-      setFormData({
-        name: displayUser?.name || '',
-        email: displayUser?.email || '',
-        phone: user?.phone || '',
-        bio: 'Experienced game developer with a passion for creating immersive gaming experiences.',
-        location: 'San Francisco, CA, USA',
-        experience: '5+ years',
-        skills: ['Unity 3D', 'Unreal Engine', 'Game Design', 'Programming'],
-        title: 'Game Developer',
-      });
-    }
+    const fetchUserData = async () => {
+      if (user || session?.user) {
+        const displayUser = user || session?.user;
+        const username = user?.username || displayUser?.name?.toLowerCase().replace(/\s+/g, '_') || 'user';
+        
+        try {
+          const response = await fetch(`/api/users/${username}`);
+          if (response.ok) {
+            const { user: userData } = await response.json();
+            setFormData({
+              name: userData.name || '',
+              email: userData.email || '',
+              phone: userData.phone || '',
+              bio: userData.bio || 'Experienced game developer with a passion for creating immersive gaming experiences.',
+              location: 'San Francisco, CA, USA',
+              experience: '5+ years',
+              skills: userData.skills || ['Unity 3D', 'Unreal Engine', 'Game Design', 'Programming'],
+              title: 'Game Developer',
+              avatar: userData.avatar || '',
+              github: userData.github || '',
+            });
+          } else {
+            // Fallback to default data if API fails
+            setFormData({
+              name: displayUser?.name || '',
+              email: displayUser?.email || '',
+              phone: user?.phone || '',
+              bio: 'Experienced game developer with a passion for creating immersive gaming experiences.',
+              location: 'San Francisco, CA, USA',
+              experience: '5+ years',
+              skills: ['Unity 3D', 'Unreal Engine', 'Game Design', 'Programming'],
+              title: 'Game Developer',
+              avatar: '',
+              github: '',
+            });
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          // Fallback to default data
+          setFormData({
+            name: displayUser?.name || '',
+            email: displayUser?.email || '',
+            phone: user?.phone || '',
+            bio: 'Experienced game developer with a passion for creating immersive gaming experiences.',
+            location: 'San Francisco, CA, USA',
+            experience: '5+ years',
+            skills: ['Unity 3D', 'Unreal Engine', 'Game Design', 'Programming'],
+            title: 'Game Developer',
+            avatar: '',
+            github: '',
+          });
+        }
+      }
+    };
+    
+    fetchUserData();
   }, [user, session]);
 
   if (loading) {
@@ -124,12 +169,31 @@ export default function EditProfile() {
     setIsSubmitting(true);
     
     try {
-      // Here you would typically call an API to update the user profile
-      // For now, we'll simulate a successful update
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const displayUser = user || session?.user;
+      const username = user?.username || displayUser?.name?.toLowerCase().replace(/\s+/g, '_') || 'user';
       
-      // Redirect back to profile with success message
-      router.push('/profile?updated=true');
+      const response = await fetch(`/api/users/${username}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          bio: formData.bio,
+          avatar: formData.avatar,
+          github: formData.github,
+        }),
+      });
+
+      if (response.ok) {
+        // Redirect back to profile with success message
+        router.push(`/profile/${username}?updated=true`);
+      } else {
+        const errorData = await response.json();
+        setErrors({ submit: errorData.error || 'Failed to update profile' });
+      }
     } catch (error) {
       setErrors({ submit: 'Failed to update profile' });
     } finally {
@@ -266,6 +330,52 @@ export default function EditProfile() {
                   <option value="5+ years">5+ years</option>
                   <option value="10+ years">10+ years</option>
                 </select>
+              </div>
+
+              <div>
+                <label htmlFor="avatar" className="block text-sm font-medium text-gray-700 mb-2">
+                  Profile Photo URL
+                </label>
+                <input
+                  type="url"
+                  id="avatar"
+                  name="avatar"
+                  value={formData.avatar}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="https://example.com/your-photo.jpg"
+                />
+                {formData.avatar && (
+                  <div className="mt-2">
+                    <img 
+                      src={formData.avatar} 
+                      alt="Profile preview" 
+                      className="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="github" className="block text-sm font-medium text-gray-700 mb-2">
+                  GitHub Profile
+                </label>
+                <input
+                  type="text"
+                  id="github"
+                  name="github"
+                  value={formData.github}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="username or https://github.com/username"
+                />
+                <p className="mt-1 text-sm text-gray-500">
+                  Enter your GitHub username or full URL
+                </p>
               </div>
             </div>
 

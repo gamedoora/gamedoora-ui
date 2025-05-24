@@ -18,6 +18,8 @@ model User {
   phone      String?
   password   String
   avatar     String?
+  github     String?
+  bio        String?
   userID     String   @unique @default(cuid())
   isVerified Boolean  @default(false)
   created_at DateTime @default(now())

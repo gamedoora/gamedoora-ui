@@ -10,6 +10,7 @@ const RegisterPage = () => {
   const { register, loading, isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     name: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -45,6 +46,18 @@ const RegisterPage = () => {
 
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
+    }
+
+    if (!formData.username.trim()) {
+      newErrors.username = 'Username is required';
+    } else if (formData.username.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters long';
+    } else if (formData.username.length > 20) {
+      newErrors.username = 'Username must be no more than 20 characters long';
+    } else if (!/^[a-zA-Z]/.test(formData.username)) {
+      newErrors.username = 'Username must start with a letter';
+    } else if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(formData.username)) {
+      newErrors.username = 'Username can only contain letters and numbers';
     }
 
     if (!formData.email) {
@@ -85,12 +98,9 @@ const RegisterPage = () => {
     setIsSubmitting(true);
     
     try {
-      // Generate username from name (lowercase, replace spaces with underscores)
-      const username = formData.name.trim().toLowerCase().replace(/\s+/g, '_');
-      
       const result = await register({
         name: formData.name.trim(),
-        username: username,
+        username: formData.username.trim(),
         email: formData.email,
         password: formData.password,
         phone: formData.phone || undefined,
@@ -164,6 +174,30 @@ const RegisterPage = () => {
               {errors.name && (
                 <p className="mt-1 text-sm text-red-600">{errors.name}</p>
               )}
+            </div>
+
+            <div>
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                Username
+              </label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                autoComplete="username"
+                value={formData.username}
+                onChange={handleChange}
+                className={`mt-1 appearance-none relative block w-full px-3 py-2 border rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm ${
+                  errors.username ? 'border-red-300' : 'border-gray-300'
+                }`}
+                placeholder="Choose a username (letters and numbers only)"
+              />
+              {errors.username && (
+                <p className="mt-1 text-sm text-red-600">{errors.username}</p>
+              )}
+              <p className="mt-1 text-xs text-gray-500">
+                Username must start with a letter and contain only letters and numbers
+              </p>
             </div>
 
             <div>

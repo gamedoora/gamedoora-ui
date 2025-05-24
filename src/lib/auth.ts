@@ -100,6 +100,7 @@ export const getUserFromRequest = async (request: NextRequest) => {
     select: {
       id: true,
       name: true,
+      username: true,
       email: true,
       phone: true,
       avatar: true,
@@ -121,6 +122,30 @@ export const validateEmail = (email: string): boolean => {
   // More strict email validation
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
   return emailRegex.test(email) && !email.includes('..') && !email.includes(' ');
+};
+
+export const validateUsername = (username: string): { isValid: boolean; message?: string } => {
+  if (!username || typeof username !== 'string') {
+    return { isValid: false, message: 'Username is required' };
+  }
+  
+  if (username.length < 3) {
+    return { isValid: false, message: 'Username must be at least 3 characters long' };
+  }
+  
+  if (username.length > 20) {
+    return { isValid: false, message: 'Username must be no more than 20 characters long' };
+  }
+  
+  if (!/^[a-zA-Z]/.test(username)) {
+    return { isValid: false, message: 'Username must start with a letter' };
+  }
+  
+  if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(username)) {
+    return { isValid: false, message: 'Username can only contain letters and numbers' };
+  }
+  
+  return { isValid: true };
 };
 
 export const validatePassword = (password: string): { isValid: boolean; message?: string } => {

@@ -5,31 +5,36 @@ import { comparePassword, generateToken, createSession, validateEmail } from '@/
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, password } = body;
+    const { emailOrUsername, password } = body;
 
     // Validation
-    if (!email || !password) {
+    if (!emailOrUsername || !password) {
       return NextResponse.json(
-        { error: 'Email and password are required' },
+        { error: 'Email/username and password are required' },
         { status: 400 }
       );
     }
 
-    if (!validateEmail(email)) {
+    // Determine if input is email or username
+    const isEmail = emailOrUsername.includes('@');
+    
+    if (isEmail && !validateEmail(emailOrUsername)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
-    // Find user
-    const user = await prisma.user.findUnique({
-      where: { email },
+    // Find user by email or username
+    const user = await prisma.user.findFirst({
+      where: isEmail 
+        ? { email: emailOrUsername }
+        : { username: emailOrUsername },
     });
 
     if (!user) {
       return NextResponse.json(
-        { error: 'Invalid email or password' },
+        { error: 'Invalid email/username or password' },
         { status: 401 }
       );
     }
@@ -38,7 +43,7 @@ export async function POST(request: NextRequest) {
     const isPasswordValid = await comparePassword(password, user.password);
     if (!isPasswordValid) {
       return NextResponse.json(
-        { error: 'Invalid email or password' },
+        { error: 'Invalid email/username or password' },
         { status: 401 }
       );
     }
@@ -53,6 +58,7 @@ export async function POST(request: NextRequest) {
     const userData = {
       id: user.id,
       name: user.name,
+      username: user.username,
       email: user.email,
       phone: user.phone,
       avatar: user.avatar,

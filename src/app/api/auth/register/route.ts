@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/db';
-import { hashPassword, validateEmail, validatePassword } from '@/lib/auth';
+import { hashPassword, validateEmail, validatePassword, validateUsername } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, password, phone } = body;
+    const { name, username, email, password, phone } = body;
 
     // Validation
-    if (!name || !email || !password) {
+    if (!name || !username || !email || !password) {
       return NextResponse.json(
-        { error: 'Name, email, and password are required' },
+        { error: 'Name, username, email, and password are required' },
         { status: 400 }
       );
     }
@@ -18,6 +18,14 @@ export async function POST(request: NextRequest) {
     if (!validateEmail(email)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
+        { status: 400 }
+      );
+    }
+
+    const usernameValidation = validateUsername(username);
+    if (!usernameValidation.isValid) {
+      return NextResponse.json(
+        { error: usernameValidation.message },
         { status: 400 }
       );
     }
@@ -31,13 +39,25 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user already exists
-    const existingUser = await prisma.user.findUnique({
+    const existingUserByEmail = await prisma.user.findUnique({
       where: { email },
     });
 
-    if (existingUser) {
+    if (existingUserByEmail) {
       return NextResponse.json(
         { error: 'User with this email already exists' },
+        { status: 409 }
+      );
+    }
+
+    // Check if username already exists
+    const existingUserByUsername = await prisma.user.findUnique({
+      where: { username },
+    });
+
+    if (existingUserByUsername) {
+      return NextResponse.json(
+        { error: 'Username is already taken' },
         { status: 409 }
       );
     }
@@ -48,6 +68,7 @@ export async function POST(request: NextRequest) {
     const user = await prisma.user.create({
       data: {
         name,
+        username,
         email,
         password: hashedPassword,
         phone: phone || null,
@@ -55,6 +76,7 @@ export async function POST(request: NextRequest) {
       select: {
         id: true,
         name: true,
+        username: true,
         email: true,
         phone: true,
         userID: true,

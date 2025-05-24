@@ -15,7 +15,7 @@ export default function SignIn() {
   const { login, loading, isAuthenticated } = useAuth();
 
   const [formData, setFormData] = useState({
-    email: '',
+    emailOrUsername: '',
     password: '',
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -60,10 +60,10 @@ export default function SignIn() {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!formData.email) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+    if (!formData.emailOrUsername) {
+      newErrors.emailOrUsername = 'Email or username is required';
+    } else if (formData.emailOrUsername.includes('@') && !/\S+@\S+\.\S+/.test(formData.emailOrUsername)) {
+      newErrors.emailOrUsername = 'Invalid email format';
     }
 
     if (!formData.password) {
@@ -84,7 +84,7 @@ export default function SignIn() {
     setIsSubmitting(true);
     
     try {
-      const result = await login(formData.email, formData.password);
+      const result = await login(formData.emailOrUsername, formData.password);
       
       if (result.success) {
         router.push('/profile');
@@ -130,24 +130,24 @@ export default function SignIn() {
 
                 <div className="mt-6">
                   <label
-                    htmlFor="email"
+                    htmlFor="emailOrUsername"
                     className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
                   >
-                    Email Address
+                    Email or Username
               </label>
               <input
-                    type="email"
-                    name="email"
-                id="email"
-                value={formData.email}
+                    type="text"
+                    name="emailOrUsername"
+                id="emailOrUsername"
+                value={formData.emailOrUsername}
                 onChange={handleChange}
-                    placeholder="example@gamedoora.com"
+                    placeholder="example@gamedoora.com or username"
                     className={`block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
-                      errors.email ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
+                      errors.emailOrUsername ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
                 }`}
               />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+              {errors.emailOrUsername && (
+                <p className="mt-1 text-sm text-red-600">{errors.emailOrUsername}</p>
               )}
             </div>
 
