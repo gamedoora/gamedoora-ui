@@ -85,8 +85,12 @@ const RegisterPage = () => {
     setIsSubmitting(true);
     
     try {
+      // Generate username from name (lowercase, replace spaces with underscores)
+      const username = formData.name.trim().toLowerCase().replace(/\s+/g, '_');
+      
       const result = await register({
         name: formData.name.trim(),
+        username: username,
         email: formData.email,
         password: formData.password,
         phone: formData.phone || undefined,
