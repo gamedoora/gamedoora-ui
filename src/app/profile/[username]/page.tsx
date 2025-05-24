@@ -47,42 +47,19 @@ export default function PublicProfile() {
       try {
         setLoading(true);
         
-        // Mock API call - in real app, this would fetch from your database
-        // For now, we'll simulate with some mock data
-        const mockUsers: { [key: string]: PublicUser } = {
-          'john_doe': {
-            id: 1,
-            name: 'John Doe',
-            username: 'john_doe',
-            email: 'john@example.com',
-            avatar: '/default-avatar.png',
-            bio: 'Experienced game developer with a passion for creating immersive gaming experiences. Specialized in Unity 3D and Unreal Engine development.',
-            skills: ['Unity 3D', 'Unreal Engine', 'Game Design', 'Programming', 'Blender'],
-            isVerified: true,
-            created_at: '2023-01-15T10:00:00Z',
-            projectCount: 5
-          },
-          'jane_smith': {
-            id: 2,
-            name: 'Jane Smith',
-            username: 'jane_smith',
-            email: 'jane@example.com',
-            avatar: '/default-avatar.png',
-            bio: 'Indie game developer and artist. Creating beautiful pixel art games and interactive experiences.',
-            skills: ['Pixel Art', 'Game Design', 'Unity 2D', 'Photoshop', 'Animation'],
-            isVerified: false,
-            created_at: '2023-03-20T14:30:00Z',
-            projectCount: 3
-          }
-        };
-
-        const user = mockUsers[username];
-        if (user) {
-          setProfileUser(user);
-        } else {
+        // Fetch user profile from database
+        const response = await fetch(`/api/users/${username}`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          setProfileUser(data.user);
+        } else if (response.status === 404) {
           setError('User not found');
+        } else {
+          setError('Failed to load profile');
         }
       } catch (err) {
+        console.error('Error fetching profile:', err);
         setError('Failed to load profile');
       } finally {
         setLoading(false);
