@@ -11,7 +11,11 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:ci": "jest --passWithNoTests --watchAll=false",
-    "test:optional": "jest --passWithNoTests --watchAll=false || echo 'Tests failed but continuing...'"
+    "test:optional": "jest --passWithNoTests --watchAll=false || echo 'Tests failed but continuing...'",
+    "postinstall": "node scripts/setup-db.js",
+    "db:setup": "prisma migrate dev",
+    "db:reset": "prisma migrate reset",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

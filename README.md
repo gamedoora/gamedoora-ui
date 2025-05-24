@@ -2,11 +2,35 @@ UI built in NextJs (typescript) for gamedoora, a social and collaboration hub fo
 
 ## Getting Started
 
-First, run the development server:
+This project is designed for zero-setup development. Everything is automated!
 
 ```bash
-npm run dev
+git clone <repository-url>
+cd gamedoora-ui
+npm install  # Automatically sets up database and dependencies
+npm run dev  # Start developing immediately
 ```
+
+The `npm install` command automatically:
+- ✅ Installs all dependencies
+- ✅ Sets up the SQLite database
+- ✅ Runs database migrations
+- ✅ Generates Prisma client
+- ✅ Configures testing environment
+
+No manual database setup required! 🎉
+
+### Manual Database Management
+
+If you need to manage the database manually:
+
+```bash
+npm run db:setup    # Initialize database
+npm run db:reset    # Reset database (deletes all data)
+npm run db:studio   # Open database GUI
+```
+
+For detailed database information, see [DATABASE_SETUP.md](./DATABASE_SETUP.md).
 
 Alternatively, you can run the application using Podman/Docker:
 
