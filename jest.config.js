@@ -26,6 +26,10 @@ const customJestConfig = {
     '<rootDir>/src/**/*.{test,spec}.{js,jsx,ts,tsx}',
     '<rootDir>/tests/**/*.{test,spec}.{js,jsx,ts,tsx}',
   ],
+  // CI-friendly options
+  passWithNoTests: true,
+  silent: process.env.CI === 'true',
+  maxWorkers: process.env.CI === 'true' ? 2 : '50%',
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
