@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from '@/lib/db';
 
 export async function GET(
   request: NextRequest,
@@ -9,6 +7,7 @@ export async function GET(
 ) {
   try {
     const { username } = params;
+    console.log('GET /api/users/[username] - username:', username);
 
     if (!username) {
       return NextResponse.json(
@@ -18,6 +17,7 @@ export async function GET(
     }
 
     // Find user by username
+    console.log('Searching for user with username:', username);
     const user = await prisma.user.findUnique({
       where: {
         username: username
@@ -39,7 +39,10 @@ export async function GET(
       }
     });
 
+    console.log('Found user:', user);
+
     if (!user) {
+      console.log('User not found for username:', username);
       return NextResponse.json(
         { error: 'User not found' },
         { status: 404 }
@@ -72,8 +75,6 @@ export async function GET(
       { error: 'Internal server error' },
       { status: 500 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
@@ -157,7 +158,5 @@ export async function PUT(
       { error: 'Internal server error' },
       { status: 500 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 } 
