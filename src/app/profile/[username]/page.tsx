@@ -5,6 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useParams, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Navigation } from '@/components/Navigation';
 
 interface PublicUser {
   id: number;
@@ -120,7 +121,9 @@ export default function PublicProfile() {
   const isOwner = isOwnProfile();
 
   return (
-    <div className="min-h-screen py-8 px-4">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 px-4">
       {/* Success Message */}
       {showSuccessMessage && (
         <div className="max-w-screen-xl mx-auto mb-6">
@@ -194,34 +197,64 @@ export default function PublicProfile() {
       {/* Content Grid */}
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         {/* Basic Information */}
-        <div className="rounded-lg shadow-lg p-6 bg-white">
-          <h2 className="text-xl font-bold mb-4">Basic Information</h2>
-          <div className="space-y-3">
-            <p>
-              <strong>Full Name:</strong> {profileUser.name}
-            </p>
+        <div className="rounded-xl shadow-lg p-6 bg-white border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+          <h2 className="text-xl font-bold mb-6 text-gray-800 flex items-center">
+            <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Basic Information
+          </h2>
+          <div className="space-y-4">
+            <div className="flex flex-col space-y-1">
+              <label className="text-sm font-medium text-gray-600">Full Name</label>
+              <div className="text-gray-900 font-medium">{profileUser.name}</div>
+            </div>
+            
+            <div className="flex flex-col space-y-1">
+              <label className="text-sm font-medium text-gray-600">Username</label>
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-500 bg-gray-100 px-3 py-2 rounded-lg border text-sm font-mono">
+                  @{profileUser.username}
+                </span>
+                <span className="text-xs text-gray-400 italic">Cannot be changed</span>
+              </div>
+            </div>
+
             {isOwner && profileUser.email && (
-              <p>
-                <strong>Email:</strong>{' '}
+              <div className="flex flex-col space-y-1">
+                <label className="text-sm font-medium text-gray-600">Email</label>
                 <a
                   href={`mailto:${profileUser.email}`}
-                  className="text-blue-400 hover:underline"
+                  className="text-blue-600 hover:text-blue-700 hover:underline transition-colors duration-200"
                 >
                   {profileUser.email}
                 </a>
-              </p>
+              </div>
             )}
+            
             {isOwner && profileUser.phone && (
-              <p>
-                <strong>Phone:</strong> {profileUser.phone}
-              </p>
+              <div className="flex flex-col space-y-1">
+                <label className="text-sm font-medium text-gray-600">Phone</label>
+                <div className="text-gray-900">{profileUser.phone}</div>
+              </div>
             )}
-            <p>
-              <strong>Member Since:</strong> {new Date(profileUser.created_at).toLocaleDateString()}
-            </p>
-            <p>
-              <strong>Projects:</strong> {profileUser.projectCount} projects
-            </p>
+            
+            <div className="flex flex-col space-y-1">
+              <label className="text-sm font-medium text-gray-600">Member Since</label>
+              <div className="text-gray-900">{new Date(profileUser.created_at).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}</div>
+            </div>
+            
+            <div className="flex flex-col space-y-1">
+              <label className="text-sm font-medium text-gray-600">Projects</label>
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl font-bold text-blue-600">{profileUser.projectCount}</span>
+                <span className="text-gray-600">projects</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -334,6 +367,7 @@ export default function PublicProfile() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 } 

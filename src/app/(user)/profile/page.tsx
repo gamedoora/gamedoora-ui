@@ -61,7 +61,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4">
+    <div className="py-8 px-4">
       {/* Success Message */}
       {showSuccessMessage && (
         <div className="max-w-screen-xl mx-auto mb-6">

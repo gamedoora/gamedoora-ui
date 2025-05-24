@@ -1,22 +1,18 @@
-import Navbar from '@/app/components/Navbar';
-import Sidebar from '@/app/components/Sidebar';
+'use client';
 
-export default function ProfileLayout({
+import { Navigation } from '@/components/Navigation';
+
+export default function UserLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: {
-    slug: string;
-  };
 }) {
   return (
-    <main className="flex">
-      <Sidebar />
-      <div className='w-full'>
-        <Navbar />
+    <>
+      <Navigation />
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
         {children}
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
