@@ -13,7 +13,7 @@ export default function SignIn() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login, loading, isAuthenticated } = useAuth();
-  
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -118,15 +118,15 @@ export default function SignIn() {
               {successMessage && (
                 <div className="mb-4 bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-md text-sm">
                   {successMessage}
-                </div>
+          </div>
               )}
 
               <form onSubmit={handleSubmit}>
-                {errors.submit && (
+            {errors.submit && (
                   <div className="mb-4 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
-                    {errors.submit}
-                  </div>
-                )}
+                {errors.submit}
+              </div>
+            )}
 
                 <div className="mt-6">
                   <label
@@ -134,22 +134,22 @@ export default function SignIn() {
                     className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
                   >
                     Email Address
-                  </label>
-                  <input
+              </label>
+              <input
                     type="email"
                     name="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
                     placeholder="example@gamedoora.com"
                     className={`block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
                       errors.email ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
-                    }`}
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-                  )}
-                </div>
+                }`}
+              />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+              )}
+            </div>
 
                 <div className="mt-6">
                   <div className="flex justify-between mb-2">
@@ -157,8 +157,8 @@ export default function SignIn() {
                       htmlFor="password"
                       className="text-sm text-gray-600 dark:text-gray-200"
                     >
-                      Password
-                    </label>
+                Password
+              </label>
                     <Link
                       href="/forgot-password"
                       className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline"
@@ -167,39 +167,39 @@ export default function SignIn() {
                     </Link>
                   </div>
 
-                  <input
+              <input
                     type="password"
                     name="password"
-                    id="password"
-                    value={formData.password}
-                    onChange={handleChange}
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
                     placeholder="Your Password"
                     className={`block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
                       errors.password ? 'border-red-300' : 'border-gray-200 dark:border-gray-700'
-                    }`}
-                  />
-                  {errors.password && (
-                    <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-                  )}
-                </div>
+                }`}
+              />
+              {errors.password && (
+                <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+              )}
+            </div>
 
                 <div className="mt-6">
-                  <button 
-                    type="submit"
-                    disabled={isSubmitting}
+              <button
+                type="submit"
+                disabled={isSubmitting}
                     className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? (
+              >
+                {isSubmitting ? (
                       <div className="flex items-center justify-center">
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                        Signing in...
-                      </div>
-                    ) : (
-                      'Sign in'
-                    )}
-                  </button>
-                </div>
-              </form>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Signing in...
+                  </div>
+                ) : (
+                  'Sign in'
+                )}
+              </button>
+            </div>
+          </form>
 
               <p className="mt-6 text-sm text-center text-gray-400">
                 Don&apos;t have an account yet?{' '}
