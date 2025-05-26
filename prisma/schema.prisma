@@ -27,6 +27,14 @@ model User {
   
   // Sessions for JWT token management
   sessions   Session[]
+  
+  // Relationships for game development platform
+  ownedStudios    Studio[]   @relation("StudioOwner")
+  studioMembers   StudioMember[]
+  projects        Project[]  @relation("ProjectCreator")
+  projectMembers  ProjectMember[]
+  ideas           Idea[]
+  ideaLikes       IdeaLike[]
 }
 
 model Session {
@@ -37,4 +45,120 @@ model Session {
   created_at DateTime @default(now())
   
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Studio {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  avatar      String?
+  banner      String?
+  isPublic    Boolean  @default(true)
+  tags        String?  // JSON array of tags
+  website     String?
+  twitter     String?
+  discord     String?
+  github      String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  
+  // Owner relationship
+  ownerId     Int
+  owner       User     @relation("StudioOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  
+  // Members and projects
+  members     StudioMember[]
+  projects    Project[]
+}
+
+model StudioMember {
+  id       Int      @id @default(autoincrement())
+  role     String   @default("member") // "admin", "moderator", "member"
+  joinedAt DateTime @default(now())
+  
+  studioId Int
+  studio   Studio   @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  
+  userId   Int
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([studioId, userId])
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  content     String?  // Detailed project description/content
+  thumbnail   String?
+  banner      String?
+  status      String   @default("in_progress") // "planning", "in_progress", "completed", "on_hold"
+  tags        String?  // JSON array of tags
+  gameEngine  String?  // Unity, Unreal, Godot, etc.
+  platform    String?  // PC, Mobile, Console, Web
+  genre       String?  // Action, RPG, Puzzle, etc.
+  website     String?
+  github      String?
+  playableDemo String?
+  isPublic    Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  
+  // Creator relationship
+  creatorId   Int
+  creator     User     @relation("ProjectCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  
+  // Studio relationship (optional)
+  studioId    Int?
+  studio      Studio?  @relation(fields: [studioId], references: [id], onDelete: SetNull)
+  
+  // Project members
+  members     ProjectMember[]
+}
+
+model ProjectMember {
+  id       Int      @id @default(autoincrement())
+  role     String   @default("contributor") // "lead", "developer", "artist", "designer", "contributor"
+  joinedAt DateTime @default(now())
+  
+  projectId Int
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([projectId, userId])
+}
+
+model Idea {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  content     String?  // Detailed idea description
+  category    String?  // "game_concept", "feature", "art_style", "mechanics", etc.
+  tags        String?  // JSON array of tags
+  attachments String?  // JSON array of file URLs
+  isPublic    Boolean  @default(true)
+  likesCount  Int      @default(0)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  
+  // Creator relationship
+  creatorId   Int
+  creator     User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  
+  // Likes
+  likes       IdeaLike[]
+}
+
+model IdeaLike {
+  id     Int @id @default(autoincrement())
+  
+  ideaId Int
+  idea   Idea @relation(fields: [ideaId], references: [id], onDelete: Cascade)
+  
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([ideaId, userId])
 }

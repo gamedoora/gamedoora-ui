@@ -57,7 +57,7 @@ export const Navigation = () => {
                 Projects
               </Link>
               <Link
-                href="/studio"
+                href="/studios"
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Studios
@@ -204,7 +204,7 @@ export const Navigation = () => {
                 Projects
               </Link>
               <Link
-                href="/studio"
+                href="/studios"
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >

@@ -37,8 +37,8 @@ export default function HomePage() {
               Welcome to <span className="text-blue-600">GameDoora</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              The premier platform for game developers to showcase their work, connect with others, 
-              and build the future of gaming together.
+              The collaborative platform where game makers, developers, designers, and enthusiasts 
+              come together to create, connect, and build amazing games.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
@@ -60,63 +60,107 @@ export default function HomePage() {
         {/* Features Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Discover Amazing Game Developers
+            Create, Collaborate, and Connect
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Sample Profiles */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Projects Feature */}
             <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  JD
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">John Doe</h3>
-                  <p className="text-gray-600">@john_doe</p>
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    ✓ Verified
-                  </span>
-                </div>
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
               </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Showcase Projects</h3>
               <p className="text-gray-600 mb-4">
-                Experienced game developer specializing in Unity 3D and Unreal Engine development.
+                Share your game projects, get feedback, and find collaborators. From indie gems to AAA concepts.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Unity 3D</span>
-                <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Unreal Engine</span>
-                <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Game Design</span>
+                <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Unity</span>
+                <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Unreal</span>
+                <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Godot</span>
               </div>
-              <Link 
-                href="/profile/john_doe" 
-                className="text-blue-600 hover:text-blue-800 font-semibold"
-              >
-                View Profile →
-              </Link>
             </div>
 
+            {/* Studios Feature */}
             <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  JS
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">Jane Smith</h3>
-                  <p className="text-gray-600">@jane_smith</p>
-                </div>
+              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
               </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Form Studios</h3>
               <p className="text-gray-600 mb-4">
-                Indie game developer and artist creating beautiful pixel art games and interactive experiences.
+                Create or join game development studios. Build teams, manage projects, and grow together.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Pixel Art</span>
-                <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Unity 2D</span>
-                <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Animation</span>
+                <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Team Building</span>
+                <span className="bg-pink-100 text-pink-800 px-2 py-1 rounded text-xs">Collaboration</span>
               </div>
-              <Link 
-                href="/profile/jane_smith" 
-                className="text-blue-600 hover:text-blue-800 font-semibold"
-              >
-                View Profile →
-              </Link>
+            </div>
+
+            {/* Ideas Feature */}
+            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Share Ideas</h3>
+              <p className="text-gray-600 mb-4">
+                Got a brilliant game concept? Share it with the community, get feedback, and find people to bring it to life.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Innovation</span>
+                <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Creativity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Success Stories Section */}
+        <div className="bg-white py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              Success Stories
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                    PF
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">PixelForge Studios</h3>
+                    <p className="text-gray-600">5 members • 3 active projects</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 mb-4">
+                  &ldquo;Started as a simple idea shared on GameDoora. Now we&rsquo;re a thriving studio with multiple successful game releases!&rdquo;
+                </p>
+                <div className="flex gap-2">
+                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Fantasy RPG</span>
+                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Unity</span>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                    CR
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Cyber Runner</h3>
+                    <p className="text-gray-600">Solo project • 10k+ downloads</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 mb-4">
+                  &ldquo;Found amazing collaborators through GameDoora who helped bring my cyberpunk vision to life. The community feedback was invaluable!&rdquo;
+                </p>
+                <div className="flex gap-2">
+                  <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Cyberpunk</span>
+                  <span className="bg-pink-100 text-pink-800 px-2 py-1 rounded text-xs">Godot</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -124,16 +168,24 @@ export default function HomePage() {
         {/* CTA Section */}
         <div className="bg-blue-600 text-white py-16">
           <div className="max-w-4xl mx-auto text-center px-4">
-            <h2 className="text-3xl font-bold mb-4">Ready to Join the Community?</h2>
+            <h2 className="text-3xl font-bold mb-4">Ready to Build the Future of Gaming?</h2>
             <p className="text-xl mb-8 text-blue-100">
-              Connect with game developers, showcase your projects, and build the future of gaming.
+              Whether you&rsquo;re a developer, designer, artist, or just passionate about games - there&rsquo;s a place for you here.
             </p>
-            <Link 
-              href="/sign-up" 
-              className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Get Started Today
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/sign-up" 
+                className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              >
+                Start Creating Today
+              </Link>
+              <Link 
+                href="/projects" 
+                className="px-8 py-3 bg-blue-700 text-white border border-blue-500 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+              >
+                Explore Projects
+              </Link>
+            </div>
           </div>
         </div>
       </div>
