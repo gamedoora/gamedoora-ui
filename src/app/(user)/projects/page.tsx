@@ -1,14 +1,57 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function ProjectsPage() {
   const { data: session } = useSession();
+  const { user, loading, isAuthenticated } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!loading && !isAuthenticated && !session) {
+      router.push('/sign-in');
+    }
+  }, [isAuthenticated, loading, session, router]);
+
+  // Check for success message
+  useEffect(() => {
+    if (searchParams?.get('created') === 'true') {
+      setShowSuccessMessage(true);
+      setTimeout(() => setShowSuccessMessage(false), 5000);
+    }
+  }, [searchParams]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <>
-      {session?.user?.name ? (
+      {(session?.user?.name || user) ? (
         <div className="min-h-screen py-8 px-4">
+          {/* Success Message */}
+          {showSuccessMessage && (
+            <div className="max-w-screen-xl mx-auto mb-6">
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md flex items-center gap-2">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Project created successfully!
+              </div>
+            </div>
+          )}
+          
           {/* Content Grid */}
           <div className="max-w-screen-xl mx-auto mt-8">
             {/* Projects Section */}
@@ -76,9 +119,9 @@ export default function ProjectsPage() {
                       <option>Name</option>
                     </select>
                   </div>
-                  <button className="w-full px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-400">
+                  <Link href="/projects/create" className="block w-full px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-400 text-center">
                     Create New Project
-                  </button>
+                  </Link>
                   <p className="text-sm text-gray-400 mt-2">
                     Start a new game project
                   </p>
@@ -88,7 +131,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       ) : (
-        <div className="min-h-screen flex items-center justify-center text-white">
+        <div className="min-h-screen flex items-center justify-center">
           <p>You are not logged in.</p>
         </div>
       )}
